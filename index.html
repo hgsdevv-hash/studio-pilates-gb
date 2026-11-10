@@ -19,32 +19,38 @@
 <body>
 
 <div class="intro" aria-hidden="true">
-  <svg class="mola" viewBox="0 0 400 60"><polyline points="0,30 30,30 45,8 65,52 85,8 105,52 125,8 145,52 165,8 185,52 205,8 225,52 245,8 265,52 285,8 305,52 325,8 345,52 360,30 400,30"/></svg>
-  <p class="intro-name">Studio Pilates GB</p>
+  <div class="intro-stage">
+    <svg class="intro-ring" viewBox="0 0 200 200"><circle cx="100" cy="100" r="96"/></svg>
+    <img class="intro-mark" src="media/logo-simbolo.png" alt="" width="420" height="320">
+  </div>
+  <p class="intro-name"><span>G</span><span>a</span><span>b</span><span>r</span><span>i</span><span>e</span><span>l</span><span>a</span><span>&nbsp;</span><span>B</span><span>u</span><span>s</span><span>i</span><span>n</span><span>a</span><span>r</span><span>i</span></p>
+  <p class="intro-sub"><i></i>Studio Pilates<i></i></p>
 </div>
 
-<main>
-  <!-- HERO: o studio enche a tela; o trilho corta o meio -->
-  <div class="hero" aria-label="Fotos do studio">
-    <img class="hero-img is-on" src="media/hero-vermelho.webp" width="1400" height="1400" alt="Gabriela Businari em posição de Pilates suspensa no Cadillac, de roupa vermelha">
-    <img class="hero-img" src="media/hero-janela.webp" width="1400" height="1750" alt="Exercício invertido no barril em frente à janela do studio, com árvores lá fora">
-    <img class="hero-img" src="media/hero-bola.webp" width="1400" height="1193" alt="Exercício no Cadillac com a bola azul do studio">
-  </div>
+<header class="top" data-top>
+  <a class="top-name" href="#topo">Studio Pilates GB</a>
+  <nav class="top-nav" aria-label="Seções">
+    <a href="#studio">O studio</a>
+    <a href="#sessoes">Sessões</a>
+    <a href="#duvidas">Dúvidas</a>
+    <a class="btn btn--top" href="https://wa.me/5519994397241?text=Ol%C3%A1%2C%20Gabriela!%20Quero%20agendar%20uma%20aula%20de%20Pilates." target="_blank" rel="noopener">Agendar aula</a>
+  </nav>
+</header>
 
-  <header class="rail" data-rail>
-    <h1 class="rail-name">Studio Pilates GB</h1>
-    <p class="rail-line">Pilates em aparelhos com fisioterapeuta, em Americana.</p>
-    <nav class="rail-nav" aria-label="Seções">
-      <a href="#studio">O studio</a>
-      <a href="#sessoes">Sessões</a>
-      <a class="btn btn--rail" href="https://wa.me/5519994397241?text=Ol%C3%A1%2C%20Gabriela!%20Quero%20agendar%20uma%20aula%20de%20Pilates." target="_blank" rel="noopener">Agendar aula</a>
-    </nav>
-  </header>
-
-  <div class="hero-foot">
-    <p>Pilates em aparelhos com fisioterapeuta, em Americana.</p>
-    <a class="btn" href="https://wa.me/5519994397241?text=Ol%C3%A1%2C%20Gabriela!%20Quero%20agendar%20uma%20aula%20de%20Pilates." target="_blank" rel="noopener">Agendar aula</a>
-  </div>
+<main id="topo">
+  <!-- HERO: o studio enche a tela -->
+  <section class="hero" aria-label="Studio Pilates GB">
+    <div class="hero-media">
+      <img class="hero-img is-on" src="media/hero-vermelho.webp" width="1400" height="1400" alt="Gabriela Businari em posição de Pilates suspensa no Cadillac, de roupa vermelha">
+      <img class="hero-img" src="media/hero-janela.webp" width="1400" height="1750" alt="Exercício invertido no barril em frente à janela do studio, com árvores lá fora">
+      <img class="hero-img" src="media/hero-bola.webp" width="1400" height="1193" alt="Exercício no Cadillac com a bola azul do studio">
+    </div>
+    <div class="hero-text">
+      <h1>Studio Pilates GB</h1>
+      <p>Pilates em aparelhos com fisioterapeuta, em Americana.</p>
+      <a class="btn btn--light" href="https://wa.me/5519994397241?text=Ol%C3%A1%2C%20Gabriela!%20Quero%20agendar%20uma%20aula%20de%20Pilates." target="_blank" rel="noopener">Agendar aula</a>
+    </div>
+  </section>
 
   <!-- SOBRE: foto larga, bloco de cor, fatos -->
   <section class="sobre" id="studio">
@@ -74,10 +80,10 @@
   <section class="sessoes" id="sessoes">
     <div class="ses-text">
       <h2 data-rise>Em quantas aulas?</h2>
-      <blockquote class="ses-quote" data-rise>“Em 10 sessões você sente a diferença, em 20 vê a diferença e em 30 terá um corpo novo.”<cite>Joseph Pilates</cite></blockquote>
+      <blockquote class="ses-quote" data-rise>“Em 10 sessões você sente a diferença, em 20 vê a diferença e em 30 terá um corpo novo.”<cite>Joseph Pilates. Arraste e veja onde você estaria.</cite></blockquote>
 
       <div class="ses-ctl" data-rise>
-        <label class="ses-label" for="aulas">Arraste e veja onde você estaria</label>
+        <label class="sr" for="aulas">Número de aulas</label>
         <input id="aulas" type="range" min="1" max="30" value="10" step="1">
         <div class="ses-freq" role="group" aria-label="Aulas por semana">
           <button type="button" data-freq="1">1x por semana</button>
@@ -113,7 +119,7 @@
     </article>
     <article class="tem-row" data-rise>
       <div><h3>Do leve ao avançado</h3><p>Quem nunca fez começa no básico. Quem já pratica encontra aula de controle, força e inversões, como as que a Gabriela faz.</p></div>
-      <video class="tem-img tem-img--c" muted loop playsinline preload="none" poster="media/avancado-poster.jpg" aria-label="Gabriela fazendo uma sequência avançada no trapézio">
+      <video class="tem-img tem-img--c" muted loop playsinline preload="none" poster="media/avancado-poster.jpg" aria-label="Gabriela subindo para uma inversão no trapézio">
         <source src="media/avancado.mp4" type="video/mp4">
       </video>
     </article>
@@ -125,21 +131,12 @@
 
   <!-- PRIMEIRA AULA: linha arrastável -->
   <section class="aula" aria-labelledby="h-aula">
-    <div class="aula-top">
-      <h2 id="h-aula" data-rise>Sua primeira aula</h2>
-      <div class="aula-btns">
-        <button type="button" data-dir="-1" aria-label="Voltar">&larr;</button>
-        <button type="button" data-dir="1" aria-label="Avançar">&rarr;</button>
-      </div>
-    </div>
-    <div class="aula-bar" aria-hidden="true"><i data-prog></i></div>
-    <ol class="aula-row" data-row>
-      <li style="--gap:110px"><h3>Você chega</h3><p>Pela varanda com plantas, na Rua Pernambuco.</p><img src="media/t-entrada.webp" width="900" height="1600" loading="lazy" alt="Varanda de entrada do studio com plantas"></li>
-      <li style="--gap:40px"><h3>A porta do studio</h3><p>O logo na entrada já avisa: aqui é Pilates.</p><img src="media/t-porta.webp" width="900" height="1600" loading="lazy" alt="Porta de entrada com o logo do Studio Pilates GB"></li>
-      <li style="--gap:140px"><h3>Uma conversa</h3><p>Sobre a sua rotina, as dores e o que você quer do corpo.</p><img src="media/t-recepcao.webp" width="900" height="1600" loading="lazy" alt="Recepção com poltronas pretas e espelho redondo"></li>
-      <li style="--gap:70px"><h3>Um café antes</h3><p>Tem água e café no cantinho da recepção.</p><img src="media/t-cafe.webp" width="900" height="1600" loading="lazy" alt="Cantinho com máquina de café e bebedouro"></li>
-      <li style="--gap:120px"><h3>Os aparelhos</h3><p>A primeira aula apresenta o Reformer, o Cadillac e os barris.</p><img src="media/t-aparelhos.webp" width="900" height="1600" loading="lazy" alt="Reformers e Cadillac na sala de aula"></li>
-      <li style="--gap:50px"><h3>E o seu plano</h3><p>Você sai sabendo quantas vezes por semana e o que vem a seguir.</p><img src="media/t-janela.webp" width="900" height="1600" loading="lazy" alt="Janela do studio com vista para as árvores"></li>
+    <h2 id="h-aula" class="aula-h" data-rise>Sua primeira aula</h2>
+    <ol class="aula-row">
+      <li data-rise><h3>Você chega</h3><p>Pela varanda com plantas, na Rua Pernambuco, 1682.</p></li>
+      <li data-rise><h3>Uma conversa</h3><p>Sobre a sua rotina, as dores e o que você quer do corpo.</p></li>
+      <li data-rise><h3>Os aparelhos</h3><p>A primeira aula apresenta o Reformer, o Cadillac e os barris, no seu ritmo.</p></li>
+      <li data-rise><h3>E o seu plano</h3><p>Você sai sabendo quantas vezes por semana e o que vem a seguir.</p></li>
     </ol>
   </section>
 
@@ -148,9 +145,8 @@
     <h2 id="h-faixa" data-rise>O corpo em movimento</h2>
     <div class="faixa-band">
       <figure class="p p1"><img src="media/ponte.webp" width="1400" height="1750" loading="lazy" alt="Ponte no Reformer"><figcaption>Força,<br>controle</figcaption></figure>
-      <figure class="p p2"><img src="media/cadillac.webp" width="1400" height="1750" loading="lazy" alt="Exercício com faixa no Cadillac"></figure>
-      <figure class="p p3"><img src="media/trapezio.webp" width="720" height="1280" loading="lazy" alt="Exercício suspenso no trapézio"></figure>
-      <figure class="p p4"><img src="media/escada.webp" width="1400" height="1400" loading="lazy" alt="Exercício invertido sobre o barril de madeira"></figure>
+      <figure class="p p2"><img src="media/invertida.webp" width="1400" height="1867" loading="lazy" alt="Exercício invertido no Cadillac"></figure>
+      <figure class="p p3"><img src="media/escada.webp" width="1400" height="1400" loading="lazy" alt="Exercício invertido sobre o barril de madeira"></figure>
     </div>
     <p class="faixa-cap">Fotos do Studio Pilates GB, na Rua Pernambuco.</p>
   </section>
@@ -187,22 +183,15 @@
     </div>
     <div class="duv-photos">
       <img class="duv-tall" src="media/faixas.webp" width="1032" height="1032" loading="lazy" alt="Gabriela suspensa nas faixas do Cadillac">
-      <img class="duv-sq" src="media/reformer.webp" width="720" height="1280" loading="lazy" alt="Exercício de pé no Reformer">
     </div>
   </section>
 
   <!-- CTA: três fotos e um campo -->
   <section class="fim" aria-labelledby="h-fim">
-    <div class="fim-strip">
-      <img src="media/invertida.webp" width="1400" height="1867" loading="lazy" alt="Exercício invertido no Cadillac">
-      <img src="media/avancado.webp" width="720" height="1280" loading="lazy" alt="Pilates avançado com a bola azul">
-      <img src="media/hero-bola.webp" width="1400" height="1193" loading="lazy" alt="Exercício no Cadillac com a bola">
-    </div>
     <div class="fim-field">
       <h2 id="h-fim" class="fim-text" data-rise>A primeira aula começa com uma mensagem.</h2>
       <p class="fim-link" data-rise><a href="https://wa.me/5519994397241?text=Ol%C3%A1%2C%20Gabriela!%20Quero%20agendar%20uma%20aula%20de%20Pilates." target="_blank" rel="noopener">Agende a sua pelo WhatsApp</a></p>
       <p class="fim-small" data-rise>A Gabriela responde pessoalmente e combina o melhor horário com você.</p>
-      <img class="fim-portrait" src="media/retrato.webp" width="1134" height="1134" loading="lazy" alt="Gabriela Businari">
     </div>
   </section>
 </main>

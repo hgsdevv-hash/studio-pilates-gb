@@ -18,10 +18,16 @@
   };
   heroLoop();
 
-  /* ---------- trilho: atravessa o meio e vira cabeçalho ---------- */
-  const rail = $('[data-rail]');
-  const dock = () => rail.classList.toggle('is-docked', rail.getBoundingClientRect().top <= 0 && scrollY > innerHeight * 0.45);
-  addEventListener('scroll', dock, { passive: true }); dock();
+  /* ---------- topo: transparente sobre a foto, sólido depois ---------- */
+  const top = $('[data-top]'); let lastY = 0;
+  const onScroll = () => {
+    const y = scrollY, past = y > innerHeight * 0.8;
+    top.classList.toggle('is-solid', past);
+    top.classList.toggle('is-hidden', past && y > lastY + 2);
+    if (y < lastY - 2 || !past) top.classList.remove('is-hidden');
+    lastY = y;
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* ---------- sessões: 10 sente, 20 vê, 30 corpo novo ---------- */
   const range = $('#aulas'), nEl = $('[data-n]'), stEl = $('[data-stage]'), whenEl = $('[data-when]');
@@ -53,16 +59,6 @@
     paint();
   }));
   paint();
-
-  /* ---------- primeira aula: linha arrastável ---------- */
-  const row = $('[data-row]'), prog = $('[data-prog]');
-  const upd = () => {
-    const max = row.scrollWidth - row.clientWidth;
-    const vis = row.clientWidth / row.scrollWidth;
-    prog.style.width = Math.max(vis, max ? (row.scrollLeft + row.clientWidth) / row.scrollWidth : 1) * 100 + '%';
-  };
-  row.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
-  $$('[data-dir]').forEach(b => b.addEventListener('click', () => row.scrollBy({ left: +b.dataset.dir * 312, behavior: reduce ? 'auto' : 'smooth' })));
 
   /* ---------- vídeos só tocam quando aparecem ---------- */
   const vio = new IntersectionObserver(es => es.forEach(e => {
@@ -98,13 +94,23 @@
   setInterval(reveal, 300);
   reveal();
 
-  /* ---------- abertura: a mola estica e solta ---------- */
+  /* ---------- abertura: o círculo se fecha, o símbolo aparece, a cortina abre em círculo ---------- */
   const intro = $('.intro');
+  const heroIn = () => {
+    gsap.fromTo('.hero-img.is-on', { scale: 1.18 }, { scale: 1, duration: 1.8, ease: 'power3.out' });
+    gsap.fromTo('.hero-text > *', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .9, stagger: .1, ease: 'power3.out', delay: .15 });
+    gsap.fromTo('.top', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: .6, delay: .3 });
+  };
   if (!hasG || reduce) { intro.classList.add('is-gone'); return; }
-  setTimeout(() => intro.classList.add('is-gone'), 2400);
-  const tl = gsap.timeline({ onComplete: () => intro.classList.add('is-gone') });
-  tl.fromTo('.mola', { scaleX: .35 }, { scaleX: 1, duration: .55, ease: 'elastic.out(1, .45)' })
-    .to('.intro-name', { opacity: 1, duration: .25 }, .2)
-    .to('.intro', { yPercent: -100, duration: .45, ease: 'power3.inOut' }, '+=.15')
-    .fromTo('.rail', { opacity: 0 }, { opacity: 1, duration: .4 }, '-=.2');
+  gsap.set('.hero-text > *', { opacity: 0, y: 40 });
+  setTimeout(() => { if (!intro.classList.contains('is-gone')) { intro.classList.add('is-gone'); gsap.set('.hero-text > *', { opacity: 1, y: 0 }); } }, 4200);
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: () => intro.classList.add('is-gone') });
+  tl.to('.intro-ring circle', { strokeDashoffset: 0, duration: .9, ease: 'power2.inOut' })
+    .fromTo('.intro-mark', { opacity: 0, scale: .6, rotate: -25 }, { opacity: 1, scale: 1, rotate: 0, duration: .9, ease: 'back.out(1.6)' }, .25)
+    .fromTo('.intro-name span', { opacity: 0, y: 26, rotateX: -80 }, { opacity: 1, y: 0, rotateX: 0, duration: .5, stagger: .035 }, .55)
+    .to('.intro-sub', { opacity: 1, duration: .3 }, 1.0)
+    .to('.intro-sub i', { scaleX: 1, duration: .5, ease: 'power2.out' }, 1.0)
+    .to('.intro-stage', { scale: 1.06, duration: .25, ease: 'power1.inOut', yoyo: true, repeat: 1 }, 1.25)
+    .to('.intro', { clipPath: 'circle(0% at 50% 45%)', duration: .85, ease: 'power3.inOut' }, 1.8)
+    .add(heroIn, 1.95);
 })();
